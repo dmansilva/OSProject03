@@ -172,8 +172,11 @@ UPROGS=\
 	_sh\
 	_stressfs\
 	_usertests\
+	_usfgrep\
 	_wc\
 	_zombie\
+        _halt\
+	_pipetest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -242,8 +245,8 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
-	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
-	printf.c umalloc.c\
+	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c usfgrep.c wc.c zombie.c\
+	printf.c umalloc.c halt.c pipetest.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
 
@@ -272,8 +275,7 @@ dist-test:
 # make a new revision.
 tar:
 	rm -rf /tmp/xv6
-	mkdir -p /tmp/xv6
-	cp dist/* dist/.gdbinit.tmpl /tmp/xv6
+	mkdir -p /tmp/xv6	cp dist/* dist/.gdbinit.tmpl /tmp/xv6
 	(cd /tmp; tar cf - xv6) | gzip >xv6-rev9.tar.gz  # the next one will be 9 (6/27/15)
 
 .PHONY: dist-test dist

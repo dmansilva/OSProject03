@@ -23,6 +23,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int halt(void);
+int pipe_count(int);
 
 // ulib.c
 int stat(char*, struct stat*);
@@ -30,6 +32,7 @@ char* strcpy(char*, char*);
 void *memmove(void*, void*, int);
 char* strchr(const char*, char c);
 int strcmp(const char*, const char*);
+int strncmp(const char *p, const char *q, uint n);
 void printf(int, char*, ...);
 char* gets(char*, int max);
 uint strlen(char*);

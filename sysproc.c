@@ -20,6 +20,32 @@ sys_exit(void)
   return 0;  // not reached
 }
 
+//int
+//pipe_count(int fd)
+//{
+
+
+
+
+
+
+//}
+
+int
+sys_halt(void)
+{
+  const char s[] = "Shutdown";
+  const char *p;
+
+  outw( 0xB004, 0x0 | 0x2000 );
+
+  for (p = s; *p != '\0'; p++)
+    outb (0x8900, *p);
+
+  return 0;
+
+}
+
 int
 sys_wait(void)
 {

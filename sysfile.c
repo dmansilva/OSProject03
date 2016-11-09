@@ -419,6 +419,23 @@ sys_exec(void)
 }
 
 int
+sys_pipe_count(void)
+{
+  struct file *f;
+
+  if (argfd(0, 0, &f) < 0) {
+    return -1;
+  }
+  if (f->type == FD_PIPE) {
+    return pipe_count(f->pipe);
+    
+  }
+  return -1;
+
+}
+
+
+int
 sys_pipe(void)
 {
   int *fd;
